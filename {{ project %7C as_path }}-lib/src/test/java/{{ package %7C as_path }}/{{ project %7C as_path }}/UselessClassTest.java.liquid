@@ -1,0 +1,19 @@
+package {{ package }}.{{ project }};
+
+import junit.framework.TestCase;
+import org.junit.Assert.*;
+
+public class UselessClassTest extends TestCase {
+
+    private UselessClass mSubject;
+
+    @Override
+    public void setUp() {
+        mSubject = new UselessClass();
+    }
+
+    public void testgetTrue()
+    {
+        assertTrue(mSubject.getTrue());
+    }
+}
