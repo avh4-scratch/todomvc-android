@@ -1,9 +1,3 @@
+.DS_Store
 target
-*.iws
-*.ipr
-*.iml
-.settings
-.classpath
-.project
-.idea
 gen
