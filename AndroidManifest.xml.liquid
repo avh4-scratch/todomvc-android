@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           android:versionCode="0"
           android:versionName="0.0.0-SNAPSHOT"
-          package="{{ package }}.{{ project }}">
+          package="{{ package | as_java_package }}.{{ project | as_java_package }}">
 
     <uses-sdk android:minSdkVersion="18"
               android:targetSdkVersion="18"/>

@@ -47,9 +47,12 @@ properties = YAML::load(properties_yaml)
 # Create Liquid filters
 module NameFilter
   def as_path(input)
-    input
+    as_java_package(input)
       .tr('.', '/')
-      .tr('-', '')
+  end
+  def as_java_package(input)
+    input
+      .gsub(/[^.a-zA-Z0-9]/, '')
   end
   def as_java_class(input)
     input
