@@ -1,0 +1,19 @@
+package {{ package }}.{{ project }};
+
+import android.app.Activity;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.robolectric.Robolectric;
+import org.robolectric.RobolectricTestRunner;
+
+import static org.junit.Assert.*;
+
+@RunWith(RobolectricTestRunner.class)
+public class {{ project | as_java_class }}ActivityTest {
+
+  @Test
+  public void shouldExist() throws Exception {
+    Activity activity = Robolectric.buildActivity({{ project | as_java_class }}Activity.class).create().get();
+    assertTrue(activity != null);
+  }
+}
