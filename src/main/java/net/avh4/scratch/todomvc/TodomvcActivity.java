@@ -1,10 +1,10 @@
-package {{ package | as_java_package }}.{{ project | as_java_package }};
+package net.avh4.scratch.todomvc;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 
-public class {{ project | as_java_class }}Activity extends Activity {
+public class TodomvcActivity extends Activity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

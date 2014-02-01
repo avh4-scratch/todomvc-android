@@ -1,4 +1,4 @@
-package {{ package | as_java_package }}.{{ project | as_java_package }};
+package net.avh4.scratch.todomvc;
 
 import android.app.Activity;
 import org.junit.Test;
@@ -9,11 +9,11 @@ import org.robolectric.RobolectricTestRunner;
 import static org.junit.Assert.*;
 
 @RunWith(RobolectricTestRunner.class)
-public class {{ project | as_java_class }}ActivityTest {
+public class TodomvcActivityTest {
 
   @Test
   public void shouldExist() throws Exception {
-    Activity activity = Robolectric.buildActivity({{ project | as_java_class }}Activity.class).create().get();
+    Activity activity = Robolectric.buildActivity(TodomvcActivity.class).create().get();
     assertTrue(activity != null);
   }
 }

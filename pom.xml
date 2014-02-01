@@ -3,11 +3,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>{{ package }}</groupId>
-    <artifactId>{{ project }}</artifactId>
+    <groupId>net.avh4.scratch</groupId>
+    <artifactId>todomvc</artifactId>
     <version>0.0.0-SNAPSHOT</version>
     <packaging>apk</packaging>
-    <name>{{ project }}</name>
+    <name>todomvc</name>
 
     <properties>
         <junit.version>4.11</junit.version>
