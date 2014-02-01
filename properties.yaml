@@ -1,4 +1,4 @@
 ---
-package : com.example.android
-project : my-project
+package : net.avh4.scratch
+project : todomvc
 description : ~
