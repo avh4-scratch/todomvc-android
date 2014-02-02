@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
 import net.avh4.scratch.todomvc.model.event.TodoCount;
+import net.avh4.scratch.todomvc.view.event.ClearTodoEntryField;
 import net.avh4.scratch.todomvc.view.event.SubmitNewTodo;
 
 public class TodomvcActivity extends Activity {
@@ -46,5 +47,10 @@ public class TodomvcActivity extends Activity {
     @Subscribe
     public void todoCount(TodoCount e) {
         totalCountLabel.setText(e.getCount() + " items");
+    }
+
+    @Subscribe
+    public void clearTodoEntryField(ClearTodoEntryField e) {
+        newTodoField.setText("");
     }
 }

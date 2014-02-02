@@ -1,7 +1,7 @@
 package net.avh4.scratch.todomvc.presenter;
 
-import com.squareup.otto.Bus;
 import net.avh4.scratch.todomvc.model.TodoModel;
+import net.avh4.scratch.todomvc.view.event.ClearTodoEntryField;
 import net.avh4.scratch.todomvc.view.event.SubmitNewTodo;
 import net.avh4.test.otto.TestBus;
 import org.junit.Before;
@@ -15,7 +15,7 @@ import static org.mockito.Mockito.verifyZeroInteractions;
 public class NewTodoTest {
 
     @Mock private TodoModel model;
-    private Bus bus;
+    private TestBus bus;
 
     @Before
     public void setUp() throws Exception {
@@ -31,19 +31,25 @@ public class NewTodoTest {
     }
 
     @Test
-    public void submitNewTodo_withExtraWhiteSpace_trimsBeforeAdding() throws Exception {
+    public void clearsEntryField() throws Exception {
+        bus.post(new SubmitNewTodo("anything"));
+        bus.verify(new ClearTodoEntryField());
+    }
+
+    @Test
+    public void withExtraWhiteSpace_trimsBeforeAdding() throws Exception {
         bus.post(new SubmitNewTodo("  have cake  "));
         verify(model).addTodo("have cake");
     }
 
     @Test
-    public void submitNewTodo_withEmptyString_doesNotAdd() throws Exception {
+    public void withEmptyString_doesNotAdd() throws Exception {
         bus.post(new SubmitNewTodo(""));
         verifyZeroInteractions(model);
     }
 
     @Test
-    public void submitNewTodo_withOnlyWhitespace_doesNotAdd() throws Exception {
+    public void withOnlyWhitespace_doesNotAdd() throws Exception {
         bus.post(new SubmitNewTodo("    "));
         verifyZeroInteractions(model);
     }
