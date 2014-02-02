@@ -3,6 +3,7 @@ package net.avh4.scratch.todomvc.model;
 import com.squareup.otto.Bus;
 import net.avh4.scratch.todomvc.model.event.AddedTodo;
 
+import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,7 @@ public class TodoModel {
     private final Bus bus;
     private ArrayList<Todo> items = new ArrayList<>();
 
+    @Inject
     public TodoModel(Bus bus) {
         this.bus = bus;
     }

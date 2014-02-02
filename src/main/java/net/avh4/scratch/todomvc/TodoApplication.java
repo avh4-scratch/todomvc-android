@@ -1,25 +1,26 @@
 package net.avh4.scratch.todomvc;
 
 import android.app.Application;
-import com.squareup.otto.Bus;
+import dagger.ObjectGraph;
 import net.avh4.scratch.todomvc.model.Counter;
-import net.avh4.scratch.todomvc.model.TodoModel;
 import net.avh4.scratch.todomvc.presenter.NewTodo;
 
+import javax.inject.Inject;
+
 public class TodoApplication extends Application {
-    private Bus bus;
+    private ObjectGraph dagger;
+    @Inject Counter counter;
+    @Inject NewTodo newTodo;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
-        this.bus = new Bus();
-        TodoModel model = new TodoModel(bus);
-        new Counter(model, bus);
-        new NewTodo(bus, model);
+        dagger = ObjectGraph.create(ApplicationModule.class);
+        dagger.inject(this);
     }
 
-    public Bus getBus() {
-        return bus;
+    public ObjectGraph getDagger() {
+        return dagger;
     }
 }

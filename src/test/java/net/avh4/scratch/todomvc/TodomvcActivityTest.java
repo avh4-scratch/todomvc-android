@@ -27,9 +27,9 @@ public class TodomvcActivityTest {
         MockitoAnnotations.initMocks(this);
         bus = new TestBus();
         ActivityController<TodomvcActivity> controller = Robolectric.buildActivity(TodomvcActivity.class);
-        subject = controller.get();
-        subject.setBus(bus);
-        controller.create();
+        subject = controller.create().get();
+        subject.bus = bus;
+        controller.start().resume();
     }
 
     @Test
