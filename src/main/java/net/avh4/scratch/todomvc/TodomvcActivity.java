@@ -1,32 +1,23 @@
 package net.avh4.scratch.todomvc;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
 import net.avh4.scratch.todomvc.model.event.TodoCount;
 import net.avh4.scratch.todomvc.view.event.ClearTodoEntryField;
 import net.avh4.scratch.todomvc.view.event.SubmitNewTodo;
-import net.avh4.util.di.magnum.MagnumDI;
 
-public class TodomvcActivity extends Activity {
+public class TodomvcActivity extends OttoMagnumActivity {
 
-    private Bus bus;
     private EditText newTodoField;
     private TextView totalCountLabel;
-
-    protected void inject(MagnumDI magnum) {
-        bus = magnum.get(Bus.class);
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        inject(((TodoApplication) getApplication()).getMagnum());
         setContentView(R.layout.main);
 
         totalCountLabel = (TextView) findViewById(R.id.totalCount);
@@ -38,18 +29,6 @@ public class TodomvcActivity extends Activity {
                 bus.post(new SubmitNewTodo(newTodoField.getText().toString()));
             }
         });
-    }
-
-    @Override
-    protected void onResume() {
-        super.onStart();
-        bus.register(this);
-    }
-
-    @Override
-    protected void onPause() {
-        bus.unregister(this);
-        super.onPause();
     }
 
     @Subscribe
