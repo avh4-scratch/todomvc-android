@@ -7,8 +7,6 @@ import net.avh4.util.di.magnum.MagnumDI;
 
 public class TodoApplication extends Application {
     private MagnumDI magnum;
-    private Counter counter;
-    private NewTodo newTodo;
 
     @Override
     public void onCreate() {
@@ -16,8 +14,12 @@ public class TodoApplication extends Application {
 
         magnum = new MagnumDI();
         magnum = ApplicationModule.configure(magnum);
-        counter = magnum.get(Counter.class);
-        newTodo = magnum.get(NewTodo.class);
+        instantiateFeatures();
+    }
+
+    private void instantiateFeatures() {
+        magnum.get(Counter.class);
+        magnum.get(NewTodo.class);
     }
 
     public MagnumDI getMagnum() {

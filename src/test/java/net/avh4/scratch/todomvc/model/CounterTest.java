@@ -43,6 +43,7 @@ public class CounterTest {
         bus.verify(new TodoCount(1));
     }
 
+    @SuppressWarnings("unchecked")
     private <T> List<T> list(T... ts) {
         return Arrays.asList(ts);
     }

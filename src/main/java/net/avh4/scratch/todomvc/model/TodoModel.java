@@ -9,7 +9,7 @@ import java.util.List;
 
 public class TodoModel {
     private final Bus bus;
-    private ArrayList<Todo> items = new ArrayList<>();
+    private final ArrayList<Todo> items = new ArrayList<>();
 
     @Inject
     public TodoModel(Bus bus) {
