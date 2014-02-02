@@ -8,7 +8,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyZeroInteractions;
 
 public class TodoPresenterTest {
 
@@ -19,7 +18,7 @@ public class TodoPresenterTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        subject = new TodoPresenter(view, model);
+        subject = new TodoPresenter(view);
     }
 
     @Test
@@ -32,29 +31,5 @@ public class TodoPresenterTest {
     public void initialState_hidesFooter() throws Exception {
         subject.init();
         verify(view).setFooterVisible(false);
-    }
-
-    @Test
-    public void submitNewTodo_addsIt() throws Exception {
-        subject.submitNewTodo("Eat cake");
-        verify(model).addTodo("Eat cake");
-    }
-
-    @Test
-    public void submitNewTodo_withExtraWhiteSpace_trimsBeforeAdding() throws Exception {
-        subject.submitNewTodo("  have cake  ");
-        verify(model).addTodo("have cake");
-    }
-
-    @Test
-    public void submitNewTodo_withEmptyString_doesNotAdd() throws Exception {
-        subject.submitNewTodo("");
-        verifyZeroInteractions(model);
-    }
-
-    @Test
-    public void submitNewTodo_withOnlyWhitespace_doesNotAdd() throws Exception {
-        subject.submitNewTodo("    ");
-        verifyZeroInteractions(model);
     }
 }
