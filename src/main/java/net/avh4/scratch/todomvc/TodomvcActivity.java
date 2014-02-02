@@ -11,19 +11,22 @@ import com.squareup.otto.Subscribe;
 import net.avh4.scratch.todomvc.model.event.TodoCount;
 import net.avh4.scratch.todomvc.view.event.ClearTodoEntryField;
 import net.avh4.scratch.todomvc.view.event.SubmitNewTodo;
-
-import javax.inject.Inject;
+import net.avh4.util.di.magnum.MagnumDI;
 
 public class TodomvcActivity extends Activity {
 
-    @Inject Bus bus;
+    private Bus bus;
     private EditText newTodoField;
     private TextView totalCountLabel;
+
+    protected void inject(MagnumDI magnum) {
+        bus = magnum.get(Bus.class);
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ((TodoApplication) getApplication()).getDagger().inject(this);
+        inject(((TodoApplication) getApplication()).getMagnum());
         setContentView(R.layout.main);
 
         totalCountLabel = (TextView) findViewById(R.id.totalCount);

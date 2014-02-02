@@ -5,6 +5,7 @@ import android.widget.EditText;
 import net.avh4.scratch.todomvc.view.event.ClearTodoEntryField;
 import net.avh4.scratch.todomvc.view.event.SubmitNewTodo;
 import net.avh4.test.otto.TestBus;
+import net.avh4.util.di.magnum.MagnumDI;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,7 +29,7 @@ public class TodomvcActivityTest {
         bus = new TestBus();
         ActivityController<TodomvcActivity> controller = Robolectric.buildActivity(TodomvcActivity.class);
         subject = controller.create().get();
-        subject.bus = bus;
+        subject.inject(new MagnumDI(bus));
         controller.start().resume();
     }
 
