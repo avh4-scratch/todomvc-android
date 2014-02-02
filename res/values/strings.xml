@@ -3,4 +3,6 @@
     <string name="hello">Hello, World!</string>
     <string name="app_name">todomvc</string>
     <string name="deployment">${deployment.stage}</string>
+    <string name="new_todo_placeholder">New todo</string>
+    <string name="new_todo_action">Add</string>
 </resources>

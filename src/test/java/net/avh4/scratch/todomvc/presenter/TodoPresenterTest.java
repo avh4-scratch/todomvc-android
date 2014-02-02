@@ -9,6 +9,7 @@ import org.mockito.MockitoAnnotations;
 
 import static org.mockito.Mockito.verify;
 
+@Deprecated
 public class TodoPresenterTest {
 
     private TodoPresenter subject;

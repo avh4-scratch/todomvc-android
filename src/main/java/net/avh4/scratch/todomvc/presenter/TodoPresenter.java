@@ -4,6 +4,7 @@ import net.avh4.scratch.todomvc.view.TodoView;
 
 import javax.inject.Inject;
 
+@Deprecated
 public class TodoPresenter {
     private final TodoView view;
 

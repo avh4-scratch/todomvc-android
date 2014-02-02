@@ -3,7 +3,7 @@ package net.avh4.scratch.todomvc.presenter;
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
 import net.avh4.scratch.todomvc.model.TodoModel;
-import net.avh4.scratch.todomvc.view.SubmitNewTodo;
+import net.avh4.scratch.todomvc.view.event.SubmitNewTodo;
 
 import javax.inject.Inject;
 

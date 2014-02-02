@@ -2,7 +2,7 @@ package net.avh4.scratch.todomvc.presenter;
 
 import com.squareup.otto.Bus;
 import net.avh4.scratch.todomvc.model.TodoModel;
-import net.avh4.scratch.todomvc.view.SubmitNewTodo;
+import net.avh4.scratch.todomvc.view.event.SubmitNewTodo;
 import net.avh4.test.otto.TestBus;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,13 +16,12 @@ public class NewTodoTest {
 
     @Mock private TodoModel model;
     private Bus bus;
-    private NewTodo subject;
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         bus = new TestBus();
-        subject = new NewTodo(bus, model);
+        new NewTodo(bus, model);
     }
 
     @Test
