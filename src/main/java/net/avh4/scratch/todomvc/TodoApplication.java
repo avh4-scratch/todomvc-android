@@ -4,6 +4,7 @@ import android.app.Application;
 import net.avh4.scratch.todomvc.presenter.DisplayCounts;
 import net.avh4.scratch.todomvc.presenter.MarkAllAsComplete;
 import net.avh4.scratch.todomvc.presenter.NewTodo;
+import net.avh4.scratch.todomvc.presenter.NoTodos;
 import net.avh4.util.di.magnum.MagnumDI;
 
 public class TodoApplication extends Application {
@@ -22,6 +23,7 @@ public class TodoApplication extends Application {
         magnum.get(NewTodo.class);
         magnum.get(DisplayCounts.class);
         magnum.get(MarkAllAsComplete.class);
+        magnum.get(NoTodos.class);
     }
 
     public MagnumDI getMagnum() {

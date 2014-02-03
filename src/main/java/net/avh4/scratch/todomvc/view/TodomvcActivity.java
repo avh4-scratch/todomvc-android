@@ -1,12 +1,15 @@
-package net.avh4.scratch.todomvc;
+package net.avh4.scratch.todomvc.view;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 import com.squareup.otto.Subscribe;
+import net.avh4.scratch.todomvc.OttoMagnumActivity;
+import net.avh4.scratch.todomvc.R;
 import net.avh4.scratch.todomvc.model.Todo;
 import net.avh4.scratch.todomvc.model.TodoCollection;
 import net.avh4.scratch.todomvc.view.event.*;
+import net.avh4.util.di.magnum.MagnumDI;
 
 public class TodomvcActivity extends OttoMagnumActivity {
 
@@ -15,6 +18,11 @@ public class TodomvcActivity extends OttoMagnumActivity {
     private ListView listView;
     private ArrayAdapter<Todo> adapter;
     private CheckBox completeAll;
+
+    @Override
+    protected void inject(MagnumDI magnum) {
+        super.inject(magnum);
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -73,5 +81,28 @@ public class TodomvcActivity extends OttoMagnumActivity {
         } else {
             completeAll.setChecked(false);
         }
+    }
+
+    @Subscribe
+    public void hideFooter(HideFooter e) {
+        int visibility;
+        if (e.isHidden()) {
+            visibility = View.GONE;
+        } else {
+            visibility = View.VISIBLE;
+        }
+        totalCountLabel.setVisibility(visibility);
+    }
+
+    @Subscribe
+    public void hideMain(HideMain e) {
+        int visibility;
+        if (e.isHidden()) {
+            visibility = View.GONE;
+        } else {
+            visibility = View.VISIBLE;
+        }
+        listView.setVisibility(visibility);
+        completeAll.setVisibility(visibility);
     }
 }

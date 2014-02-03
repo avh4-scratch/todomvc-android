@@ -1,10 +1,11 @@
-package net.avh4.scratch.todomvc;
+package net.avh4.scratch.todomvc.view;
 
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
+import net.avh4.scratch.todomvc.R;
 import net.avh4.scratch.todomvc.model.Todo;
 import net.avh4.scratch.todomvc.model.TodoCollection;
 import net.avh4.scratch.todomvc.view.event.ClearTodoEntryField;
