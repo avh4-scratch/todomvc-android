@@ -6,9 +6,9 @@ import android.widget.*;
 import com.squareup.otto.Subscribe;
 import net.avh4.scratch.todomvc.model.Todo;
 import net.avh4.scratch.todomvc.model.TodoCollection;
-import net.avh4.scratch.todomvc.model.event.TodoCount;
 import net.avh4.scratch.todomvc.view.event.ClearTodoEntryField;
 import net.avh4.scratch.todomvc.view.event.SubmitNewTodo;
+import net.avh4.scratch.todomvc.view.event.UpdateCounts;
 
 public class TodomvcActivity extends OttoMagnumActivity {
 
@@ -44,8 +44,8 @@ public class TodomvcActivity extends OttoMagnumActivity {
     }
 
     @Subscribe
-    public void todoCount(TodoCount e) {
-        totalCountLabel.setText(e.getCount() + " items");
+    public void todoCount(UpdateCounts e) {
+        totalCountLabel.setText(e.getTotal() + " items");
     }
 
     @Subscribe

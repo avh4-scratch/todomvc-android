@@ -33,4 +33,8 @@ public class TodoCollection {
     public TodoCollection todoCollection() {
         return this;
     }
+
+    public int getTodosCount() {
+        return items.size();
+    }
 }

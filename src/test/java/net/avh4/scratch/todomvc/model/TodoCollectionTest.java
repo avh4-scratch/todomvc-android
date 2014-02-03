@@ -42,4 +42,11 @@ public class TodoCollectionTest {
         subject.addTodo("Eat crackers");
         bus.verify(subject);
     }
+
+    @Test
+    public void testGetTodoCount() throws Exception {
+        assertThat(subject.getTodosCount(), is(0));
+        subject.addTodo("Have cake");
+        assertThat(subject.getTodosCount(), is(1));
+    }
 }
