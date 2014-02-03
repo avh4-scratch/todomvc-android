@@ -3,7 +3,6 @@ package net.avh4.scratch.todomvc.presenter;
 import com.squareup.otto.Bus;
 import net.avh4.scratch.todomvc.model.TodoCollection;
 import net.avh4.scratch.todomvc.view.TodoScreen;
-import net.avh4.scratch.todomvc.view.event.UpdateCounts;
 import net.avh4.test.otto.TestBus;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,6 +28,6 @@ public class DisplayCountsTest {
     public void whenTodosAreUpdates_countsNumberOfItems() throws Exception {
         stub(collection.getTodosCount()).toReturn(77);
         bus.post(collection);
-        verify(view).updateCounts(new UpdateCounts(77));
+        verify(view).updateCounts(77);
     }
 }

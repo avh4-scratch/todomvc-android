@@ -11,7 +11,6 @@ import net.avh4.scratch.todomvc.model.TodoCollection;
 import net.avh4.scratch.todomvc.view.event.HiddenCheck;
 import net.avh4.scratch.todomvc.view.event.SubmitNewTodo;
 import net.avh4.scratch.todomvc.view.event.ToggleAllComplete;
-import net.avh4.scratch.todomvc.view.event.UpdateCounts;
 import net.avh4.util.di.magnum.MagnumDI;
 
 public class TodomvcActivity extends OttoMagnumActivity implements TodoScreen {
@@ -64,8 +63,8 @@ public class TodomvcActivity extends OttoMagnumActivity implements TodoScreen {
     }
 
     @Override
-    public void updateCounts(UpdateCounts e) {
-        totalCountLabel.setText(e.getTotal() + " items");
+    public void updateCounts(int total) {
+        totalCountLabel.setText(total + " items");
     }
 
     @Override

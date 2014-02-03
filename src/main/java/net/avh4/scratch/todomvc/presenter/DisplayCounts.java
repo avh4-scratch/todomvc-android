@@ -4,7 +4,6 @@ import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
 import net.avh4.scratch.todomvc.model.TodoCollection;
 import net.avh4.scratch.todomvc.view.TodoScreen;
-import net.avh4.scratch.todomvc.view.event.UpdateCounts;
 
 public class DisplayCounts {
     private final TodoScreen view;
@@ -16,6 +15,6 @@ public class DisplayCounts {
 
     @Subscribe
     public void todoCollection(TodoCollection e) {
-        view.updateCounts(new UpdateCounts(e.getTodosCount()));
+        view.updateCounts(e.getTodosCount());
     }
 }
