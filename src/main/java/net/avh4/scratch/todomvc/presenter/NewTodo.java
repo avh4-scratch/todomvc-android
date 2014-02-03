@@ -4,7 +4,6 @@ import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
 import net.avh4.scratch.todomvc.model.TodoCollection;
 import net.avh4.scratch.todomvc.view.TodoScreen;
-import net.avh4.scratch.todomvc.view.event.ClearTodoEntryField;
 import net.avh4.scratch.todomvc.view.event.SubmitNewTodo;
 
 import javax.inject.Inject;
@@ -26,6 +25,6 @@ public class NewTodo {
         if (!text.isEmpty()) {
             model.addTodo(text);
         }
-        view.clearTodoEntryField(new ClearTodoEntryField());
+        view.clearTodoEntryField();
     }
 }

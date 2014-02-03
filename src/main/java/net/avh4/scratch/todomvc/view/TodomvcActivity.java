@@ -66,7 +66,7 @@ public class TodomvcActivity extends OttoMagnumActivity implements TodoScreen {
     }
 
     @Override
-    public void clearTodoEntryField(ClearTodoEntryField e) {
+    public void clearTodoEntryField() {
         newTodoField.setText("");
     }
 

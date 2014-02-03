@@ -5,10 +5,10 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
+import net.avh4.scratch.ViewModel;
 import net.avh4.scratch.todomvc.R;
 import net.avh4.scratch.todomvc.model.Todo;
 import net.avh4.scratch.todomvc.model.TodoCollection;
-import net.avh4.scratch.todomvc.view.event.ClearTodoEntryField;
 import net.avh4.scratch.todomvc.view.event.SubmitNewTodo;
 import net.avh4.scratch.todomvc.view.event.ToggleAllComplete;
 import net.avh4.test.otto.TestBus;
@@ -24,10 +24,10 @@ import org.robolectric.util.ActivityController;
 
 import java.util.Arrays;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.stub;
+import static org.mockito.Mockito.verify;
 
 @RunWith(RobolectricTestRunner.class)
 public class TodomvcActivityTest {
@@ -37,6 +37,7 @@ public class TodomvcActivityTest {
     @Mock private TodoCollection collection;
     @Mock private Todo t1;
     @Mock private Todo t2;
+    @Mock ViewModel.M viewModel;
 
     @Before
     public void setUp() throws Exception {
@@ -44,8 +45,14 @@ public class TodomvcActivityTest {
         bus = new TestBus();
         ActivityController<TodomvcActivity> controller = Robolectric.buildActivity(TodomvcActivity.class);
         subject = controller.create().get();
-        subject.inject(new MagnumDI(bus));
+        subject.inject(new MagnumDI(bus, viewModel));
         controller.start().resume();
+    }
+
+    @Test
+    public void registersWithViewModel() throws Exception {
+        assertThat(subject, instanceOf(TodoScreen.class));
+        verify(viewModel).register(subject);
     }
 
     @Test
@@ -61,7 +68,7 @@ public class TodomvcActivityTest {
     @Test
     public void testClearEntryField() throws Exception {
         newTodoField().setText("should be cleared");
-        bus.post(new ClearTodoEntryField());
+        subject.clearTodoEntryField();
         assertThat(newTodoField().getText().toString(), is(""));
     }
 

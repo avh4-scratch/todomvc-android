@@ -3,7 +3,6 @@ package net.avh4.scratch.todomvc.presenter;
 import com.squareup.otto.Bus;
 import net.avh4.scratch.todomvc.model.TodoCollection;
 import net.avh4.scratch.todomvc.view.TodoScreen;
-import net.avh4.scratch.todomvc.view.event.ClearTodoEntryField;
 import net.avh4.scratch.todomvc.view.event.SubmitNewTodo;
 import net.avh4.test.otto.TestBus;
 import org.junit.Before;
@@ -36,7 +35,7 @@ public class NewTodoTest {
     @Test
     public void clearsEntryField() throws Exception {
         bus.post(new SubmitNewTodo("anything"));
-        verify(view).clearTodoEntryField(new ClearTodoEntryField());
+        verify(view).clearTodoEntryField();
     }
 
     @Test
