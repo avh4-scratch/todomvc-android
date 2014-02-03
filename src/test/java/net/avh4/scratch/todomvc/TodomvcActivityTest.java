@@ -2,12 +2,14 @@ package net.avh4.scratch.todomvc;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import net.avh4.scratch.todomvc.model.Todo;
 import net.avh4.scratch.todomvc.model.TodoCollection;
 import net.avh4.scratch.todomvc.view.event.ClearTodoEntryField;
 import net.avh4.scratch.todomvc.view.event.SubmitNewTodo;
+import net.avh4.scratch.todomvc.view.event.ToggleAllComplete;
 import net.avh4.test.otto.TestBus;
 import net.avh4.util.di.magnum.MagnumDI;
 import org.junit.Before;
@@ -66,12 +68,19 @@ public class TodomvcActivityTest {
     public void shouldShowTodos() throws Exception {
         stub(collection.getTodos()).toReturn(Arrays.asList(t1, t2));
         bus.post(collection);
-        ListView listView = (ListView) subject.findViewById(R.id.listView);
+        ListView listView = (ListView) subject.findViewById(R.id.list_view);
         View item = listView.getAdapter().getView(0, null, null);
         assertThat(item, notNullValue());
     }
 
+    @Test
+    public void togglingCompleteAll_sendsEvent() throws Exception {
+        CheckBox check = (CheckBox) subject.findViewById(R.id.complete_all);
+        check.performClick();
+        bus.verify(new ToggleAllComplete(true));
+    }
+
     private EditText newTodoField() {
-        return (EditText) subject.findViewById(R.id.newTodoField);
+        return (EditText) subject.findViewById(R.id.new_todo_field);
     }
 }

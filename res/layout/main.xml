@@ -10,10 +10,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <CheckBox
+            android:id="@+id/complete_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/newTodoField"
+            android:id="@+id/new_todo_field"
             android:layout_weight="1"
             android:hint="@string/new_todo_placeholder"
             android:inputType="textCapSentences"
@@ -30,7 +35,7 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/listView"
+        android:id="@+id/list_view"
         android:layout_gravity="center_horizontal"/>
 
     <LinearLayout

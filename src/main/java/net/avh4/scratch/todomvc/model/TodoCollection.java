@@ -37,4 +37,18 @@ public class TodoCollection {
     public int getTodosCount() {
         return items.size();
     }
+
+    public void completeAll() {
+        for (Todo item : items) {
+            item.complete();
+        }
+        bus.post(this);
+    }
+
+    public void uncheckAll() {
+        for (Todo item : items) {
+            item.uncheck();
+        }
+        bus.post(this);
+    }
 }
