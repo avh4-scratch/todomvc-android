@@ -1,6 +1,6 @@
 package net.avh4.scratch.todomvc.presenter;
 
-import net.avh4.scratch.todomvc.model.TodoModel;
+import net.avh4.scratch.todomvc.model.TodoCollection;
 import net.avh4.scratch.todomvc.view.TodoView;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,7 +14,7 @@ public class TodoPresenterTest {
 
     private TodoPresenter subject;
     @Mock private TodoView view;
-    @Mock private TodoModel model;
+    @Mock private TodoCollection model;
 
     @Before
     public void setUp() throws Exception {

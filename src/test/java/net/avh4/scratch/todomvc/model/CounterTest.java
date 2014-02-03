@@ -17,7 +17,7 @@ import static org.mockito.Mockito.stub;
 
 public class CounterTest {
 
-    @Mock private TodoModel model;
+    @Mock private TodoCollection model;
     @Mock private Todo t1;
     @Mock private Todo t2;
     private Counter subject;

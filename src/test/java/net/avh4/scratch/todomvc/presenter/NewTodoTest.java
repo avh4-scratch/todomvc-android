@@ -1,6 +1,6 @@
 package net.avh4.scratch.todomvc.presenter;
 
-import net.avh4.scratch.todomvc.model.TodoModel;
+import net.avh4.scratch.todomvc.model.TodoCollection;
 import net.avh4.scratch.todomvc.view.event.ClearTodoEntryField;
 import net.avh4.scratch.todomvc.view.event.SubmitNewTodo;
 import net.avh4.test.otto.TestBus;
@@ -14,7 +14,7 @@ import static org.mockito.Mockito.verifyZeroInteractions;
 
 public class NewTodoTest {
 
-    @Mock private TodoModel model;
+    @Mock private TodoCollection model;
     private TestBus bus;
 
     @Before

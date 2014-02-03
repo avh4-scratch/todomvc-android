@@ -9,11 +9,11 @@ import net.avh4.scratch.todomvc.model.event.TodoCount;
 import javax.inject.Inject;
 
 public class Counter {
-    private final TodoModel model;
+    private final TodoCollection model;
     private final Bus bus;
 
     @Inject
-    public Counter(TodoModel model, Bus bus) {
+    public Counter(TodoCollection model, Bus bus) {
         this.model = model;
         this.bus = bus;
         bus.register(this);
