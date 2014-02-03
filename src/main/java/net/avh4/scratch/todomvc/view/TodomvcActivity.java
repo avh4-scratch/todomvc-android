@@ -8,7 +8,10 @@ import net.avh4.scratch.todomvc.OttoMagnumActivity;
 import net.avh4.scratch.todomvc.R;
 import net.avh4.scratch.todomvc.model.Todo;
 import net.avh4.scratch.todomvc.model.TodoCollection;
-import net.avh4.scratch.todomvc.view.event.*;
+import net.avh4.scratch.todomvc.view.event.HiddenCheck;
+import net.avh4.scratch.todomvc.view.event.SubmitNewTodo;
+import net.avh4.scratch.todomvc.view.event.ToggleAllComplete;
+import net.avh4.scratch.todomvc.view.event.UpdateCounts;
 import net.avh4.util.di.magnum.MagnumDI;
 
 public class TodomvcActivity extends OttoMagnumActivity implements TodoScreen {
@@ -71,13 +74,13 @@ public class TodomvcActivity extends OttoMagnumActivity implements TodoScreen {
     }
 
     @Override
-    public void updateCompleteAll(UpdateCompleteAll e) {
-        if (e.getChecked() == HiddenCheck.HIDDEN) {
+    public void updateCompleteAll(HiddenCheck state) {
+        if (state == HiddenCheck.HIDDEN) {
             completeAll.setVisibility(View.GONE);
         } else {
             completeAll.setVisibility(View.VISIBLE);
         }
-        if (e.getChecked() == HiddenCheck.CHECKED) {
+        if (state == HiddenCheck.CHECKED) {
             completeAll.setChecked(true);
         } else {
             completeAll.setChecked(false);

@@ -1,7 +1,7 @@
 package net.avh4.scratch.todomvc.view;
 
 import net.avh4.scratch.todomvc.model.TodoCollection;
-import net.avh4.scratch.todomvc.view.event.UpdateCompleteAll;
+import net.avh4.scratch.todomvc.view.event.HiddenCheck;
 import net.avh4.scratch.todomvc.view.event.UpdateCounts;
 
 public interface TodoScreen {
@@ -11,7 +11,7 @@ public interface TodoScreen {
 
     void clearTodoEntryField();
 
-    void updateCompleteAll(UpdateCompleteAll e);
+    void updateCompleteAll(HiddenCheck state);
 
     void hideFooter(boolean hidden);
 

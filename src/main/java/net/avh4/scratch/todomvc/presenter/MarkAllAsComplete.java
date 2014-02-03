@@ -7,7 +7,6 @@ import net.avh4.scratch.todomvc.model.TodoCollection;
 import net.avh4.scratch.todomvc.view.TodoScreen;
 import net.avh4.scratch.todomvc.view.event.HiddenCheck;
 import net.avh4.scratch.todomvc.view.event.ToggleAllComplete;
-import net.avh4.scratch.todomvc.view.event.UpdateCompleteAll;
 
 import static net.avh4.scratch.todomvc.view.event.HiddenCheck.*;
 
@@ -30,15 +29,15 @@ public class MarkAllAsComplete {
                 break;
             }
         }
-        HiddenCheck checked1;
+        HiddenCheck state;
         if (e.getTodos().size() == 0) {
-            checked1 = HIDDEN;
+            state = HIDDEN;
         } else if (checked) {
-            checked1 = CHECKED;
+            state = CHECKED;
         } else {
-            checked1 = UNCHECKED;
+            state = UNCHECKED;
         }
-        view.updateCompleteAll(new UpdateCompleteAll(checked1));
+        view.updateCompleteAll(state);
     }
 
     @Subscribe

@@ -6,7 +6,6 @@ import net.avh4.scratch.todomvc.model.TodoCollection;
 import net.avh4.scratch.todomvc.view.TodoScreen;
 import net.avh4.scratch.todomvc.view.event.HiddenCheck;
 import net.avh4.scratch.todomvc.view.event.ToggleAllComplete;
-import net.avh4.scratch.todomvc.view.event.UpdateCompleteAll;
 import net.avh4.test.otto.TestBus;
 import org.junit.Before;
 import org.junit.Test;
@@ -36,7 +35,7 @@ public class MarkAllAsCompleteTest {
     public void withNoTodos_hidesCompleteAll() throws Exception {
         stub(model.getTodos()).toReturn(Arrays.<Todo>asList());
         bus.post(model);
-        verify(view).updateCompleteAll(new UpdateCompleteAll(HiddenCheck.HIDDEN));
+        verify(view).updateCompleteAll(HiddenCheck.HIDDEN);
     }
 
     @Test
@@ -44,7 +43,7 @@ public class MarkAllAsCompleteTest {
         stub(t1.isComplete()).toReturn(true);
         stub(model.getTodos()).toReturn(Arrays.asList(t1));
         bus.post(model);
-        verify(view).updateCompleteAll(new UpdateCompleteAll(HiddenCheck.CHECKED));
+        verify(view).updateCompleteAll(HiddenCheck.CHECKED);
     }
 
     @Test
@@ -52,7 +51,7 @@ public class MarkAllAsCompleteTest {
         stub(t1.isComplete()).toReturn(false);
         stub(model.getTodos()).toReturn(Arrays.asList(t1));
         bus.post(model);
-        verify(view).updateCompleteAll(new UpdateCompleteAll(HiddenCheck.UNCHECKED));
+        verify(view).updateCompleteAll(HiddenCheck.UNCHECKED);
     }
 
     @Test
@@ -61,7 +60,7 @@ public class MarkAllAsCompleteTest {
         stub(t2.isComplete()).toReturn(false);
         stub(model.getTodos()).toReturn(Arrays.asList(t1, t2));
         bus.post(model);
-        verify(view).updateCompleteAll(new UpdateCompleteAll(HiddenCheck.UNCHECKED));
+        verify(view).updateCompleteAll(HiddenCheck.UNCHECKED);
     }
 
     @Test
