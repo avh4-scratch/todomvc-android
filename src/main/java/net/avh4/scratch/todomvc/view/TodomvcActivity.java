@@ -11,7 +11,7 @@ import net.avh4.scratch.todomvc.model.TodoCollection;
 import net.avh4.scratch.todomvc.view.event.*;
 import net.avh4.util.di.magnum.MagnumDI;
 
-public class TodomvcActivity extends OttoMagnumActivity {
+public class TodomvcActivity extends OttoMagnumActivity implements TodoScreen {
 
     private EditText newTodoField;
     private TextView totalCountLabel;
@@ -53,23 +53,24 @@ public class TodomvcActivity extends OttoMagnumActivity {
         });
     }
 
+    @Override
     @Subscribe
     public void todoCollection(TodoCollection e) {
         adapter.clear();
         adapter.addAll(e.getTodos());
     }
 
-    @Subscribe
-    public void todoCount(UpdateCounts e) {
+    @Override
+    public void updateCounts(UpdateCounts e) {
         totalCountLabel.setText(e.getTotal() + " items");
     }
 
-    @Subscribe
+    @Override
     public void clearTodoEntryField(ClearTodoEntryField e) {
         newTodoField.setText("");
     }
 
-    @Subscribe
+    @Override
     public void updateCompleteAll(UpdateCompleteAll e) {
         if (e.getChecked() == HiddenCheck.HIDDEN) {
             completeAll.setVisibility(View.GONE);
@@ -83,7 +84,7 @@ public class TodomvcActivity extends OttoMagnumActivity {
         }
     }
 
-    @Subscribe
+    @Override
     public void hideFooter(HideFooter e) {
         int visibility;
         if (e.isHidden()) {
@@ -94,7 +95,7 @@ public class TodomvcActivity extends OttoMagnumActivity {
         totalCountLabel.setVisibility(visibility);
     }
 
-    @Subscribe
+    @Override
     public void hideMain(HideMain e) {
         int visibility;
         if (e.isHidden()) {

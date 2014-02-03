@@ -1,5 +1,6 @@
 package net.avh4.scratch.todomvc.view.event;
 
+@Deprecated
 public class UpdateCompleteAll {
     private final HiddenCheck checked;
 

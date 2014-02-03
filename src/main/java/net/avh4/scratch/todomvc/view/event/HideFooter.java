@@ -1,5 +1,6 @@
 package net.avh4.scratch.todomvc.view.event;
 
+@Deprecated
 public class HideFooter {
     private final boolean hidden;
 

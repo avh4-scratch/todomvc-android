@@ -1,7 +1,9 @@
 package net.avh4.scratch.todomvc.presenter;
 
+import com.squareup.otto.Bus;
 import net.avh4.scratch.todomvc.model.Todo;
 import net.avh4.scratch.todomvc.model.TodoCollection;
+import net.avh4.scratch.todomvc.view.TodoScreen;
 import net.avh4.scratch.todomvc.view.event.HiddenCheck;
 import net.avh4.scratch.todomvc.view.event.ToggleAllComplete;
 import net.avh4.scratch.todomvc.view.event.UpdateCompleteAll;
@@ -17,23 +19,24 @@ import static org.mockito.Mockito.stub;
 import static org.mockito.Mockito.verify;
 
 public class MarkAllAsCompleteTest {
-    private TestBus bus;
+    private Bus bus;
     @Mock private TodoCollection model;
     @Mock private Todo t1;
     @Mock private Todo t2;
+    @Mock private TodoScreen view;
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         bus = new TestBus();
-        new MarkAllAsComplete(bus, model);
+        new MarkAllAsComplete(bus, model, view);
     }
 
     @Test
     public void withNoTodos_hidesCompleteAll() throws Exception {
         stub(model.getTodos()).toReturn(Arrays.<Todo>asList());
         bus.post(model);
-        bus.verify(new UpdateCompleteAll(HiddenCheck.HIDDEN));
+        verify(view).updateCompleteAll(new UpdateCompleteAll(HiddenCheck.HIDDEN));
     }
 
     @Test
@@ -41,7 +44,7 @@ public class MarkAllAsCompleteTest {
         stub(t1.isComplete()).toReturn(true);
         stub(model.getTodos()).toReturn(Arrays.asList(t1));
         bus.post(model);
-        bus.verify(new UpdateCompleteAll(HiddenCheck.CHECKED));
+        verify(view).updateCompleteAll(new UpdateCompleteAll(HiddenCheck.CHECKED));
     }
 
     @Test
@@ -49,7 +52,7 @@ public class MarkAllAsCompleteTest {
         stub(t1.isComplete()).toReturn(false);
         stub(model.getTodos()).toReturn(Arrays.asList(t1));
         bus.post(model);
-        bus.verify(new UpdateCompleteAll(HiddenCheck.UNCHECKED));
+        verify(view).updateCompleteAll(new UpdateCompleteAll(HiddenCheck.UNCHECKED));
     }
 
     @Test
@@ -58,7 +61,7 @@ public class MarkAllAsCompleteTest {
         stub(t2.isComplete()).toReturn(false);
         stub(model.getTodos()).toReturn(Arrays.asList(t1, t2));
         bus.post(model);
-        bus.verify(new UpdateCompleteAll(HiddenCheck.UNCHECKED));
+        verify(view).updateCompleteAll(new UpdateCompleteAll(HiddenCheck.UNCHECKED));
     }
 
     @Test

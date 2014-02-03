@@ -4,6 +4,7 @@ import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
 import net.avh4.scratch.todomvc.model.Todo;
 import net.avh4.scratch.todomvc.model.TodoCollection;
+import net.avh4.scratch.todomvc.view.TodoScreen;
 import net.avh4.scratch.todomvc.view.event.HiddenCheck;
 import net.avh4.scratch.todomvc.view.event.ToggleAllComplete;
 import net.avh4.scratch.todomvc.view.event.UpdateCompleteAll;
@@ -11,13 +12,12 @@ import net.avh4.scratch.todomvc.view.event.UpdateCompleteAll;
 import static net.avh4.scratch.todomvc.view.event.HiddenCheck.*;
 
 public class MarkAllAsComplete {
-
-    private final Bus bus;
     private final TodoCollection model;
+    private final TodoScreen view;
 
-    public MarkAllAsComplete(Bus bus, TodoCollection model) {
-        this.bus = bus;
+    public MarkAllAsComplete(Bus bus, TodoCollection model, TodoScreen view) {
         this.model = model;
+        this.view = view;
         bus.register(this);
     }
 
@@ -38,7 +38,7 @@ public class MarkAllAsComplete {
         } else {
             checked1 = UNCHECKED;
         }
-        bus.post(new UpdateCompleteAll(checked1));
+        view.updateCompleteAll(new UpdateCompleteAll(checked1));
     }
 
     @Subscribe
