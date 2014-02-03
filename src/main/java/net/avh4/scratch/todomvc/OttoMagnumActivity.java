@@ -6,7 +6,7 @@ import net.avh4.util.di.magnum.MagnumDI;
 
 public abstract class OttoMagnumActivity extends MagnumActivity {
     protected Bus bus;
-    protected ViewModel.M viewModel;
+    private ViewModel.M viewModel;
 
     @Override
     protected void inject(MagnumDI magnum) {
