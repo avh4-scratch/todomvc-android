@@ -4,7 +4,6 @@ import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
 import net.avh4.scratch.todomvc.model.TodoCollection;
 import net.avh4.scratch.todomvc.view.TodoScreen;
-import net.avh4.scratch.todomvc.view.event.HideFooter;
 import net.avh4.scratch.todomvc.view.event.HideMain;
 
 public class NoTodos {
@@ -17,7 +16,7 @@ public class NoTodos {
 
     @Subscribe
     public void todoCollection(TodoCollection e) {
-        view.hideFooter(new HideFooter(e.getTodosCount() == 0));
+        view.hideFooter(e.getTodosCount() == 0);
         view.hideMain(new HideMain(e.getTodosCount() == 0));
     }
 }

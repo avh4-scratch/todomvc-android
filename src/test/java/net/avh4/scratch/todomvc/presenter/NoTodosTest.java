@@ -3,7 +3,6 @@ package net.avh4.scratch.todomvc.presenter;
 import com.squareup.otto.Bus;
 import net.avh4.scratch.todomvc.model.TodoCollection;
 import net.avh4.scratch.todomvc.view.TodoScreen;
-import net.avh4.scratch.todomvc.view.event.HideFooter;
 import net.avh4.scratch.todomvc.view.event.HideMain;
 import net.avh4.test.otto.TestBus;
 import org.junit.Before;
@@ -31,14 +30,14 @@ public class NoTodosTest {
     public void withNoTodos_hidesFooter() throws Exception {
         stub(collection.getTodosCount()).toReturn(0);
         bus.post(collection);
-        verify(view).hideFooter(new HideFooter(true));
+        verify(view).hideFooter(true);
     }
 
     @Test
     public void withSomeTodos_showsFooter() throws Exception {
         stub(collection.getTodosCount()).toReturn(1);
         bus.post(collection);
-        verify(view).hideFooter(new HideFooter(false));
+        verify(view).hideFooter(false);
     }
 
     @Test
