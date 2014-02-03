@@ -1,7 +1,6 @@
 package net.avh4.scratch.todomvc.view;
 
 import net.avh4.scratch.todomvc.model.TodoCollection;
-import net.avh4.scratch.todomvc.view.event.HideMain;
 import net.avh4.scratch.todomvc.view.event.UpdateCompleteAll;
 import net.avh4.scratch.todomvc.view.event.UpdateCounts;
 
@@ -16,5 +15,5 @@ public interface TodoScreen {
 
     void hideFooter(boolean hidden);
 
-    void hideMain(HideMain e);
+    void hideMain(boolean hidden);
 }

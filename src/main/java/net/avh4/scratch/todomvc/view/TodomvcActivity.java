@@ -91,13 +91,8 @@ public class TodomvcActivity extends OttoMagnumActivity implements TodoScreen {
     }
 
     @Override
-    public void hideMain(HideMain e) {
-        int visibility;
-        if (e.isHidden()) {
-            visibility = View.GONE;
-        } else {
-            visibility = View.VISIBLE;
-        }
+    public void hideMain(boolean hidden) {
+        int visibility = hidden ? View.GONE : View.VISIBLE;
         listView.setVisibility(visibility);
         completeAll.setVisibility(visibility);
     }
